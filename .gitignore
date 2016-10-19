@@ -1,0 +1,8 @@
+# Ignore Xcode Local File
+.DS_Store
+*.xcworkspace
+xcuserdata
+xcshareddata
+build
+build_error.log
+ArchiveIPA
