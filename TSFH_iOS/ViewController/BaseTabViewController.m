@@ -16,6 +16,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    _appManager = [AppManager shardInstance];
+    _feedManager = [AppManager shardInstance];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+
+    [_appManager showAlertInViewController:self message:@"test"];
 }
 
 @end

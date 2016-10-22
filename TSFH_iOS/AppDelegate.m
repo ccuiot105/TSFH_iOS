@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "AppManager.h"
+#import "FeedManager.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [AppManager initAPP];
+
+    [[FeedManager shardInstance] startReachablity];
+
     return YES;
 }
 

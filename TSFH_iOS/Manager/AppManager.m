@@ -10,7 +10,19 @@
 #import <UIKit/UIKit.h>
 #import "UIColor+HexColor.h"
 
+static AppManager *_manager = nil;
+
 @implementation AppManager
+
++(id)shardInstance{
+    @synchronized (_manager) {
+        if (!_manager) {
+            _manager = [AppManager new];
+
+        }
+    }
+    return _manager;
+}
 
 +(void)initAPP
 {
@@ -23,6 +35,52 @@
     navBar.barTintColor = [UIColor colorForHex:@"48BFC1"];
     navBar.tintColor = [UIColor whiteColor];
     navBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
+}
+
+- (void) showAlertInViewController:(UIViewController *) controller message:(NSString *) msg {
+    [self showAlertInViewController:controller message:msg pressOK:NULL pressedCancel:NULL];
+}
+
+- (void) showAlertInViewController:(UIViewController *) controller message:(NSString *) msg pressOK:(void(^)(void)) pok {
+    [self showAlertInViewController:controller message:msg pressOK:pok pressedCancel:NULL];
+}
+
+- (void) showAlertInViewController:(UIViewController *) controller message:(NSString *) msg pressOK:(void(^)(void)) pok pressedCancel:(void(^)(void)) pcancel {
+    UIAlertController * alert=   [UIAlertController
+                                 alertControllerWithTitle:@"提示"
+                                 message:msg
+                                 preferredStyle:UIAlertControllerStyleAlert];
+
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action) {
+                             [alert dismissViewControllerAnimated:YES completion:^{
+                                 if (pok) pok();
+                             }];
+                         }];
+
+    [alert addAction:ok];
+
+    if (!pcancel) {
+        [controller presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action) {
+                                 [alert dismissViewControllerAnimated:YES completion:^{
+                                     if (pcancel)
+                                         pcancel();
+                                 }];
+                             }];
+
+
+    [alert addAction:cancel];
+
+    [controller presentViewController:alert animated:YES completion:nil];
 }
 
 @end
