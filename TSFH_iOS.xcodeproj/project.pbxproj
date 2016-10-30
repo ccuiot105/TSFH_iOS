@@ -29,6 +29,7 @@
 		CDB906B31DB8EAAD0027F423 /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB906B21DB8EAAD0027F423 /* LaunchViewController.m */; };
 		CDB906B61DB8F90E0027F423 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB906B51DB8F90E0027F423 /* AppManager.m */; };
 		CDB906BA1DB8FA1F0027F423 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB906B91DB8FA1F0027F423 /* UIColor+HexColor.m */; };
+		CDC98CB51DC626B2002F7F6E /* HTWObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC98CB31DC626B2002F7F6E /* HTWObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,6 +76,8 @@
 		CDB906B51DB8F90E0027F423 /* AppManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppManager.m; sourceTree = "<group>"; };
 		CDB906B81DB8FA1F0027F423 /* UIColor+HexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexColor.h"; sourceTree = "<group>"; };
 		CDB906B91DB8FA1F0027F423 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
+		CDC98CB21DC626B2002F7F6E /* HTWObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTWObject.h; sourceTree = "<group>"; };
+		CDC98CB31DC626B2002F7F6E /* HTWObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTWObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,7 @@
 		8C475C9E1DB9DB8C00E4CE1B /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				CDC98CAF1DC626B2002F7F6E /* HTWObject */,
 				8C475C9F1DB9DB8C00E4CE1B /* AFNetworking */,
 				8C475CAD1DB9DB8C00E4CE1B /* Reachability */,
 			);
@@ -241,6 +245,15 @@
 			path = Category;
 			sourceTree = "<group>";
 		};
+		CDC98CAF1DC626B2002F7F6E /* HTWObject */ = {
+			isa = PBXGroup;
+			children = (
+				CDC98CB21DC626B2002F7F6E /* HTWObject.h */,
+				CDC98CB31DC626B2002F7F6E /* HTWObject.m */,
+			);
+			path = HTWObject;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -329,6 +342,7 @@
 				8C475CBC1DB9DB8C00E4CE1B /* AFSecurityPolicy.m in Sources */,
 				8C4B7CC91DB7709200EB585F /* main.m in Sources */,
 				8C475CBB1DB9DB8C00E4CE1B /* AFNetworkReachabilityManager.m in Sources */,
+				CDC98CB51DC626B2002F7F6E /* HTWObject.m in Sources */,
 				CDB906B61DB8F90E0027F423 /* AppManager.m in Sources */,
 				8C475CC01DB9DB8C00E4CE1B /* Reachability.m in Sources */,
 			);
