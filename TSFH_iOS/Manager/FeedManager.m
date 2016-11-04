@@ -29,7 +29,7 @@
 @property (copy) void(^CheckVersionSuccess)(CheckVersionObj *);
 @property (copy) void(^CheckVersionFailure)(NSString *msg);
 
-@property (copy) void(^AutocomplateSuccess)(NSArray<AutocomplateObj *> *);
+@property (copy) void(^AutocomplateSuccess)(AutocomplateObj *);
 @property (copy) void(^AutocomplateFailure)(NSString *msg);
 
 @property (copy) void(^NewsSuccess)(NSArray<NewsObj *> *);
@@ -84,10 +84,24 @@ static FeedManager *_manager = nil;
             NSLog(@"%@",responseObject);
 
             NSDictionary *dict = (NSDictionary *)responseObject;
+            NSString *StateCode = dict[@"StateCode"];
+            NSString *StateMessage = dict[@"StateMessage"];
+
+            if (![StateCode isEqualToString:@"1"]) {
+                if (_CheckVersionFailure)
+                    _CheckVersionFailure(StateMessage);
+
+                return;
+            }
+
+            NSDictionary *StateObject = dict[@"StateObject"];
+            NSDictionary *apis = StateObject[@"apis"];
 
             CheckVersionObj *obj =  [CheckVersionObj new];
-
-            //TODO
+            obj.news = apis[@"news"];
+            obj.category = apis[@"category"];
+            obj.autocomplate = apis[@"autocomplate"];
+            obj.search = apis[@"search"];
 
             if (_CheckVersionSuccess)
                 _CheckVersionSuccess(obj);
@@ -101,7 +115,7 @@ static FeedManager *_manager = nil;
     [dataTask resume];
 }
 
-- (void) requestAutocomplateWithAppVer:(NSString *) appVer sysVer:(NSString *) sysVer guid:(NSString *) guid devType:(NSString *) devType key:(NSString *) key success:(void(^)(NSArray<AutocomplateObj *> *obj)) success failure:(void(^)(NSString *msg)) failure {
+- (void) requestAutocomplateWithAppVer:(NSString *) appVer sysVer:(NSString *) sysVer guid:(NSString *) guid devType:(NSString *) devType key:(NSString *) key success:(void(^)(AutocomplateObj *obj)) success failure:(void(^)(NSString *msg)) failure {
     if ([self checkInternetIsOkAndShowAlert:YES]) {
         if (_AutocomplateFailure)
             _AutocomplateFailure(@"請確認您的網路狀態");
@@ -126,13 +140,24 @@ static FeedManager *_manager = nil;
             NSLog(@"%@",responseObject);
 
             NSDictionary *dict = (NSDictionary *)responseObject;
+            NSString *StateCode = dict[@"StateCode"];
+            NSString *StateMessage = dict[@"StateMessage"];
 
-            NSArray<AutocomplateObj *> *result = [NSArray new];
+            if (![StateCode isEqualToString:@"1"]) {
+                if (_CheckVersionFailure)
+                    _CheckVersionFailure(StateMessage);
 
-            //TODO
+                return;
+            }
+
+            NSDictionary *StateObject = dict[@"StateObject"];
+            NSArray *keys = StateObject[@"keys"];
+
+            AutocomplateObj *obj = [AutocomplateObj new];
+            obj.keys = keys;
 
             if (_AutocomplateSuccess)
-                _AutocomplateSuccess(result);
+                _AutocomplateSuccess(obj);
 
         }else {
             if (_AutocomplateFailure)
@@ -168,10 +193,30 @@ static FeedManager *_manager = nil;
             NSLog(@"%@",responseObject);
 
             NSDictionary *dict = (NSDictionary *)responseObject;
+            NSString *StateCode = dict[@"StateCode"];
+            NSString *StateMessage = dict[@"StateMessage"];
 
-            NSArray<NewsObj *> *result = [NSArray new];
+            if (![StateCode isEqualToString:@"1"]) {
+                if (_CheckVersionFailure)
+                    _CheckVersionFailure(StateMessage);
 
-            //TODO
+                return;
+            }
+
+            NSDictionary *StateObject = dict[@"StateObject"];
+            NSArray *news = StateObject[@"news"];
+
+            NSMutableArray<NewsObj *> *result = [NSMutableArray new];
+            for (NSDictionary *dict in news) {
+                NewsObj *obj = [NewsObj new];
+                obj.title = dict[@"title"];
+                obj.link = dict[@"link"];
+                obj.newsDescription = dict[@"description"];
+
+                NSNumber *timeStamp = dict[@"pubDate"];
+                obj.pubDate = [NSDate dateWithTimeIntervalSince1970:timeStamp.doubleValue];
+                [result addObject:obj];
+            }
 
             if (_NewsSuccess)
                 _NewsSuccess(result);
@@ -209,10 +254,28 @@ static FeedManager *_manager = nil;
             NSLog(@"%@",responseObject);
 
             NSDictionary *dict = (NSDictionary *)responseObject;
+            NSString *StateCode = dict[@"StateCode"];
+            NSString *StateMessage = dict[@"StateMessage"];
 
-            NSArray<CategoryObj *> *result = [NSArray new];
+            if (![StateCode isEqualToString:@"1"]) {
+                if (_CheckVersionFailure)
+                    _CheckVersionFailure(StateMessage);
 
-            //TODO
+                return;
+            }
+
+            NSDictionary *StateObject = dict[@"StateObject"];
+            NSArray *news = StateObject[@"category"];
+
+            NSMutableArray<CategoryObj *> *result = [NSMutableArray new];
+            for (NSDictionary *dict in news) {
+                CategoryObj *obj = [CategoryObj new];
+                obj.sid = ((NSNumber *)dict[@"sid"]).integerValue;
+                obj.title = dict[@"title"];
+                obj.subTitle = dict[@"subTitle"];
+                obj.imgURL = dict[@"imgURL"];
+                [result addObject:obj];
+            }
 
             if (_CategorySuccess)
                 _CategorySuccess(result);
@@ -250,10 +313,37 @@ static FeedManager *_manager = nil;
             NSLog(@"%@",responseObject);
 
             NSDictionary *dict = (NSDictionary *)responseObject;
+            NSString *StateCode = dict[@"StateCode"];
+            NSString *StateMessage = dict[@"StateMessage"];
 
-            NSArray<SearchObj *> *result = [NSArray new];
+            if (![StateCode isEqualToString:@"1"]) {
+                if (_CheckVersionFailure)
+                    _CheckVersionFailure(StateMessage);
 
-            //TODO
+                return;
+            }
+
+            NSDictionary *StateObject = dict[@"StateObject"];
+            NSArray *news = StateObject[@"search"];
+
+            NSMutableArray<SearchObj *> *result = [NSMutableArray new];
+            for (NSDictionary *dict in news) {
+                SearchObj *obj = [SearchObj new];
+                obj.title = dict[@"title"];
+                obj.category = dict[@"category"];
+                obj.session = ((NSNumber *)dict[@"session"]).integerValue;
+                obj.year = ((NSNumber *)dict[@"year"]).integerValue;
+                obj.group = dict[@"group"];
+                obj.subject = dict[@"subject"];
+                obj.medalURL = dict[@"medalURL"];
+                obj.school = dict[@"school"];
+                obj.instructor = dict[@"instructor"];
+                obj.author = dict[@"author"];
+                obj.summary = dict[@"summary"];
+                obj.country = dict[@"country"];
+                obj.pdfURL = dict[@"pdfURL"];
+                [result addObject:obj];
+            }
 
             if (_SearchSuccess)
                 _SearchSuccess(result);
