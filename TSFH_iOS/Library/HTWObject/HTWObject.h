@@ -19,6 +19,6 @@
 //初始化
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
--(NSDictionary *)convertToDictionary;
+- (NSDictionary *)convertToDictionary;
 
 @end
