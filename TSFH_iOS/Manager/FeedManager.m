@@ -265,7 +265,7 @@ static FeedManager *_manager = nil;
             }
 
             NSDictionary *StateObject = dict[@"StateObject"];
-            NSArray *news = StateObject[@"category"];
+            NSArray *news = StateObject[@"categorys"];
 
             NSMutableArray<CategoryObj *> *result = [NSMutableArray new];
             for (NSDictionary *dict in news) {
@@ -324,7 +324,7 @@ static FeedManager *_manager = nil;
             }
 
             NSDictionary *StateObject = dict[@"StateObject"];
-            NSArray *news = StateObject[@"search"];
+            NSArray *news = StateObject[@"items"];
 
             NSMutableArray<SearchObj *> *result = [NSMutableArray new];
             for (NSDictionary *dict in news) {
