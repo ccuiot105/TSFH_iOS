@@ -7,31 +7,50 @@
 //
 
 #import "AnnouncementViewController.h"
+#import "FeedManager.h"
+#import "AppManager.h"
 
 @interface AnnouncementViewController ()
-
+@property (nonatomic,strong) NewsObj *newsObj;
 @end
 
 @implementation AnnouncementViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (!self.newsObj) {
+        [self loadAPI];
+    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - 設定相關
+-(void)setNewsObj:(NewsObj *)newsObj
+{
+    _newsObj = newsObj;
+    //資料載入，畫畫面
 }
-*/
+
+#pragma mark - 載入相關
+
+-(void)loadAPI
+{
+    [FeedManager requestNewsSuccess:^(NewsObj * _Nullable responseObject, NSError * _Nullable error) {
+        if (!error) {
+            self.newsObj = responseObject;
+        }else{
+            [AppManager showAlertWithMessage:@"與伺服器連線異常，是否重新連線" pressOK:^{
+                [self loadAPI];
+            } pressedCancel:^{
+                
+            }];
+        }
+    }];
+}
 
 @end

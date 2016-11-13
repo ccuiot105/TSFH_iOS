@@ -20,7 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [AppManager initAPP];
 
-    [[FeedManager shardInstance] startReachablity];
+//    [[FeedManager shardInstance] startReachablity];
 
     return YES;
 }

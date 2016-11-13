@@ -10,6 +10,6 @@
 
 @interface AutocomplateObj : NSObject
 
-@property (nonatomic, strong) NSArray *keys;
+@property (readonly) NSArray<NSString *> *keys;
 
 @end

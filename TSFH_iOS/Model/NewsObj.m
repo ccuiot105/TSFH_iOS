@@ -10,4 +10,15 @@
 
 @implementation NewsObj
 
+-(void)setNews:(NSArray *)news
+{
+    _news = [NewObj objectFromArray:news];
+}
+
+@end
+
+@implementation NewObj
+
+
+
 @end
