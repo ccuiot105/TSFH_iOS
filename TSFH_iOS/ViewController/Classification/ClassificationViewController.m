@@ -7,31 +7,50 @@
 //
 
 #import "ClassificationViewController.h"
+#import "FeedManager.h"
+#import "AppManager.h"
 
 @interface ClassificationViewController ()
-
+@property (nonatomic,strong) CategorysObj *categorysObj;
 @end
 
 @implementation ClassificationViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (!self.categorysObj) {
+        [self loadAPI];
+    }
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - 設定相關
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(void)setCategorysObj:(CategorysObj *)categorysObj
+{
+    _categorysObj = categorysObj;
+    //資料載入，畫畫面
 }
-*/
+
+#pragma mark - 載入相關
+
+-(void)loadAPI
+{
+    [FeedManager requestCategorysSuccess:^(CategorysObj * _Nullable responseObject, NSError * _Nullable error) {
+        if (!error) {
+            self.categorysObj = responseObject;
+        }else{
+            [AppManager showAlertWithMessage:@"與伺服器連線異常，是否重新連線" pressOK:^{
+                [self loadAPI];
+            } pressedCancel:^{
+                
+            }];
+        }
+    }];
+}
 
 @end

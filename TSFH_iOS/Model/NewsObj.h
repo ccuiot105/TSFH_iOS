@@ -6,13 +6,19 @@
 //  Copyright © 2016 CCUIOT105. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "HTWObject.h"
 
-@interface NewsObj : NSObject
+@interface NewsObj : HTWObject
 
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *link;
-@property (nonatomic, strong) NSString *newsDescription;
-@property (nonatomic, strong) NSDate *pubDate;
+@property (readonly) NSArray *news;
+
+@end
+
+@interface NewObj : HTWObject
+
+@property (readonly) NSString *title;
+@property (readonly) NSString *link;
+@property (readonly) NSString *newsDescription;
+@property (readonly) NSDate *pubDate;
 
 @end

@@ -37,6 +37,49 @@ static AppManager *_manager = nil;
     navBar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor]};
 }
 
++(UIViewController*)getRootViewController
+{
+    id<UIApplicationDelegate> appDelegate = [[UIApplication sharedApplication] delegate];
+    UIWindow *window = appDelegate.window;
+    return window.rootViewController;
+}
+
++(void) showAlertWithMessage:(NSString *) msg pressOK:(void(^)(void)) pok pressedCancel:(void(^)(void)) pcancel
+{
+    UIViewController *controller = [self getRootViewController];
+    UIAlertController * alert=   [UIAlertController
+                                  alertControllerWithTitle:@"提示"
+                                  message:msg
+                                  preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* ok = [UIAlertAction
+                         actionWithTitle:@"OK"
+                         style:UIAlertActionStyleDefault
+                         handler:^(UIAlertAction * action) {
+                             if (pok) pok();
+                         }];
+    
+    [alert addAction:ok];
+    
+    if (!pcancel) {
+        [controller presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    
+    UIAlertAction* cancel = [UIAlertAction
+                             actionWithTitle:@"Cancel"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action) {
+                                 if (pcancel)
+                                     pcancel();
+                             }];
+    
+    
+    [alert addAction:cancel];
+    
+    [controller presentViewController:alert animated:YES completion:nil];
+}
+
 - (void) showAlertInViewController:(UIViewController *) controller message:(NSString *) msg {
     [self showAlertInViewController:controller message:msg pressOK:NULL pressedCancel:NULL];
 }

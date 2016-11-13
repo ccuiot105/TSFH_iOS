@@ -18,6 +18,9 @@
 //改變NavigationBarStyle
 +(void)changeNavigationBarStyle;
 
+//秀alert
++(void) showAlertWithMessage:(NSString *) msg pressOK:(void(^)(void)) pok pressedCancel:(void(^)(void)) pcancel;
+
 -(void)showAlertInViewController:(UIViewController *) controller message:(NSString *) msg;
 -(void)showAlertInViewController:(UIViewController *) controller message:(NSString *) msg pressOK:(void(^)(void)) pok;
 -(void)showAlertInViewController:(UIViewController *) controller message:(NSString *) msg pressOK:(void(^)(void)) pok pressedCancel:(void(^)(void)) pcancel;

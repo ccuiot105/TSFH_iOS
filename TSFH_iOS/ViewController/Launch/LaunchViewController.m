@@ -7,6 +7,8 @@
 //
 
 #import "LaunchViewController.h"
+#import "FeedManager.h"
+#import "AppManager.h"
 
 @interface LaunchViewController ()
 
@@ -16,8 +18,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //之後會在這抓checkversion資料，下面的NSTimer是模擬動作
-    [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(transitionToMainVC) userInfo:nil repeats:NO];
+    [self loadAPI];
 }
 
 -(void)transitionToMainVC
@@ -37,6 +38,21 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *vc =[storyboard instantiateInitialViewController];
     return vc;
+}
+
+#pragma mark - 載入相關
+
+-(void)loadAPI
+{
+    [FeedManager requestCheckVersionSuccess:^(CheckVersionObj * _Nullable responseObject, NSError * _Nullable error) {
+        if (!error) {
+            [self transitionToMainVC];
+        }else{
+            [AppManager showAlertWithMessage:@"與伺服器連線異常，是否重新連線" pressOK:^{
+                [self loadAPI];
+            } pressedCancel:nil];
+        }
+    }];
 }
 
 @end

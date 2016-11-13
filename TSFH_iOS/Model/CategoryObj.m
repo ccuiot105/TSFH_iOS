@@ -8,6 +8,15 @@
 
 #import "CategoryObj.h"
 
+@implementation CategorysObj
+
+-(void)setCategorys:(NSArray *)categorys
+{
+    _categorys = [CategoryObj objectFromArray:categorys];
+}
+
+@end
+
 @implementation CategoryObj
 
 @end

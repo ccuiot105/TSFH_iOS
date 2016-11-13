@@ -6,13 +6,15 @@
 //  Copyright © 2016 CCUIOT105. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "HTWObject.h"
 
-@interface CheckVersionObj : NSObject
+@interface CheckVersionObj : HTWObject
 
 @property (nonatomic, strong) NSString *news;
 @property (nonatomic, strong) NSString *category;
 @property (nonatomic, strong) NSString *autocomplate;
 @property (nonatomic, strong) NSString *search;
+
++ (instancetype)sharedInstance;
 
 @end
