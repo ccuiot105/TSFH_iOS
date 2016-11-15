@@ -16,20 +16,14 @@
 
 @interface FeedManager : NSObject
 
-+ (id) shardInstance;
-
 + (void) requestCheckVersionSuccess:(ResponseBlock)success;
 
 + (void) requestNewsSuccess:(ResponseBlock)success;
 
 + (void) requestCategorysSuccess:(ResponseBlock)success;
 
-//- (void) requestCheckVersionWithAppVer:(NSString *) appVer sysVer:(NSString *) sysVer guid:(NSString *) guid devType:(NSString *) devType success:(void(^)(CheckVersionObj *obj)) success failure:(void(^)(NSString *msg)) failure;
-//- (void) requestAutocomplateWithAppVer:(NSString *) appVer sysVer:(NSString *) sysVer guid:(NSString *) guid devType:(NSString *) devType key:(NSString *) key success:(void(^)(AutocomplateObj *obj)) success failure:(void(^)(NSString *msg)) failure;
-//- (void) requestNewsWithAppVer:(NSString *) appVer sysVer:(NSString *) sysVer guid:(NSString *) guid devType:(NSString *) devType success:(void(^)(NSArray<NewsObj *> *obj)) success failure:(void(^)(NSString *msg)) failure;
-//- (void) requestCategoryWithAppVer:(NSString *) appVer sysVer:(NSString *) sysVer guid:(NSString *) guid devType:(NSString *) devType success:(void(^)(NSArray<CategoryObj *> *obj)) success failure:(void(^)(NSString *msg)) failure;
-//- (void) requestSearchWithAppVer:(NSString *) appVer sysVer:(NSString *) sysVer guid:(NSString *) guid devType:(NSString *) devType cid:(NSString *) cid key:(NSString *) key success:(void(^)(NSArray<SearchObj *> *obj)) success failure:(void(^)(NSString *msg)) failure;
-//
-//- (void) startReachablity;
++ (void) requestAutocomplatsWith:(NSString *) key success:(ResponseBlock)success;
+
++ (void) requestSearchsWithKey:(NSString *) key success:(ResponseBlock)success;
 
 @end
