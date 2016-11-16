@@ -8,6 +8,11 @@
 
 #import "HTWObject.h"
 
+typedef NS_ENUM(NSInteger, AnnouncementStyle) {
+    AnnouncementStyleOther,
+    AnnouncementStyleFirst,
+};
+
 @interface NewsObj : HTWObject
 
 @property (readonly) NSArray *news;
@@ -19,6 +24,7 @@
 @property (readonly) NSString *title;
 @property (readonly) NSString *link;
 @property (readonly) NSString *newsDescription;
-@property (readonly) NSDate *pubDate;
+@property (readonly) NSString *pubDate;
+@property (nonatomic) AnnouncementStyle style;
 
 @end

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kvd-2z-o3i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="kvd-2z-o3i">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,9 +21,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="book" translatesAutoresizingMaskIntoConstraints="NO" id="tcs-iG-Zrd">
+                                <rect key="frame" x="137.5" y="283.5" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="Y56-vc-HM4"/>
+                                    <constraint firstAttribute="width" secondItem="tcs-iG-Zrd" secondAttribute="height" id="rSH-zL-qTH"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="idea" translatesAutoresizingMaskIntoConstraints="NO" id="YAc-y0-hRG">
+                                <rect key="frame" x="154" y="251" width="66" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="H7L-Ir-5Zn"/>
+                                    <constraint firstAttribute="width" constant="66" id="OZR-0X-OKE"/>
+                                </constraints>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="臺灣科展小幫手" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pOa-jw-yAa">
+                                <rect key="frame" x="88" y="373.5" width="199" height="33.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                <color key="textColor" red="0.96078431372549022" green="0.48627450980392156" blue="0.14509803921568626" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -27,13 +46,21 @@
                         <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="pOa-jw-yAa" firstAttribute="centerX" secondItem="nhg-35-Ufp" secondAttribute="centerX" id="QrP-ZZ-Rsn"/>
-                            <constraint firstItem="pOa-jw-yAa" firstAttribute="centerY" secondItem="nhg-35-Ufp" secondAttribute="centerY" id="b4p-h2-9Vr"/>
+                            <constraint firstItem="tcs-iG-Zrd" firstAttribute="centerX" secondItem="nhg-35-Ufp" secondAttribute="centerX" id="afX-tj-zfH"/>
+                            <constraint firstItem="YAc-y0-hRG" firstAttribute="centerX" secondItem="tcs-iG-Zrd" secondAttribute="centerX" id="sVP-g7-lik"/>
+                            <constraint firstItem="tcs-iG-Zrd" firstAttribute="top" secondItem="YAc-y0-hRG" secondAttribute="bottom" constant="-37.5" id="uIq-yy-2fd"/>
+                            <constraint firstItem="pOa-jw-yAa" firstAttribute="top" secondItem="tcs-iG-Zrd" secondAttribute="bottom" constant="-10" id="xfS-PX-3Dr"/>
+                            <constraint firstItem="tcs-iG-Zrd" firstAttribute="centerY" secondItem="nhg-35-Ufp" secondAttribute="centerY" id="ycd-tC-ixT"/>
                         </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rgr-lz-9tV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="167" y="162"/>
+            <point key="canvasLocation" x="165.59999999999999" y="161.46926536731635"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="book" width="256" height="256"/>
+        <image name="idea" width="213" height="237"/>
+    </resources>
 </document>

@@ -18,6 +18,9 @@
 //改變NavigationBarStyle
 +(void)changeNavigationBarStyle;
 
+//取得RootViewController
++(UIViewController*)getRootViewController;
+
 //秀alert
 +(void) showAlertWithMessage:(NSString *) msg pressOK:(void(^)(void)) pok pressedCancel:(void(^)(void)) pcancel;
 

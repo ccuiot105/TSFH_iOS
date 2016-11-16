@@ -1,0 +1,85 @@
+//
+//  AnnouncementTableViewCell.m
+//  TSFH_iOS
+//
+//  Created by Rex on 2016/11/14.
+//  Copyright © 2016年 CCUIOT105. All rights reserved.
+//
+
+#import "AnnouncementTableViewCell.h"
+#import "UIColor+HexColor.h"
+#import "UIView+Shadow.h"
+
+@interface AnnouncementTableViewCell()
+@property (weak, nonatomic) IBOutlet UIView *cardView;
+@property (weak, nonatomic) IBOutlet UILabel *pubDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *newsDescriptionLabel;
+
+@end
+
+@implementation AnnouncementTableViewCell
+
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    // Initialization code
+}
+
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
+}
+
+- (void)initWithObject:(NewObj *)object
+{
+    self.style = object.style;
+    self.pubDate = object.pubDate;
+    self.title = object.title;
+    self.newsDescription = object.newsDescription;
+}
+-(void)setStyle:(AnnouncementStyle)style
+{
+    UIColor *backgroundColor = [UIColor whiteColor];
+    UIColor *pubDateColor = [UIColor colorForHex:@"F57C25"];
+    UIColor *titleColor = [UIColor colorForHex:@"48BFC1"];
+    UIColor *newsDescriptionColor = [UIColor blackColor];
+    switch (style) {
+        case AnnouncementStyleFirst:
+        {
+            backgroundColor = [UIColor colorForHex:@"48BFC1"];
+            pubDateColor = [UIColor whiteColor];
+            titleColor = [UIColor whiteColor];
+            newsDescriptionColor = [UIColor whiteColor];
+        }
+            break;
+        default:
+            break;
+    }
+    self.cardView.backgroundColor = backgroundColor;
+    self.pubDateLabel.textColor = pubDateColor;
+    self.titleLabel.textColor = titleColor;
+    self.newsDescriptionLabel.textColor = newsDescriptionColor;
+}
+
+-(void)setPubDate:(NSString *)pubDate
+{
+    self.pubDateLabel.text = pubDate;
+}
+
+-(void)setTitle:(NSString *)title
+{
+    self.titleLabel.text = title;
+}
+
+-(void)setNewsDescription:(NSString *)newsDescription
+{
+    self.newsDescriptionLabel.text = newsDescription;
+}
+
+-(void)setCardView:(UIView *)cardView
+{
+    _cardView = cardView;
+    [cardView shadow];
+}
+@end

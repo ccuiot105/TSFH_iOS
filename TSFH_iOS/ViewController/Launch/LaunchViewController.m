@@ -21,10 +21,15 @@
     [self loadAPI];
 }
 
+-(void)dealloc
+{
+    
+}
+
 -(void)transitionToMainVC
 {
-    __weak UIWindow *window = [UIApplication sharedApplication].windows.firstObject;
-    __weak UIViewController *vc = [self p_buildRootController];
+    UIWindow *window = [UIApplication sharedApplication].windows.firstObject;
+    UIViewController *vc = [self p_buildRootController];
     [UIView transitionFromView:self.view
                         toView:vc.view
                       duration:0.25f

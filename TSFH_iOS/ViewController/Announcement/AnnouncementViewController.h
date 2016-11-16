@@ -8,6 +8,6 @@
 
 #import "BaseViewController.h"
 
-@interface AnnouncementViewController : BaseViewController
+@interface AnnouncementViewController : BaseViewController<UITableViewDelegate,UITableViewDataSource>
 
 @end
