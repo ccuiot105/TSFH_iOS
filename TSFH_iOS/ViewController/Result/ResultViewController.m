@@ -57,6 +57,13 @@
 
 #pragma mark - 設定相關
 
+-(void)setKey:(NSString *)key
+{
+    _key = key;
+    self.title = key;
+    [self loadAPI];
+}
+
 -(void)setCategoryObj:(CategoryObj *)categoryObj
 {
     _categoryObj = categoryObj;
@@ -67,8 +74,15 @@
 -(void)setSearchObjs:(SearchObjs *)searchObjs
 {
     _searchObjs = searchObjs;
-    if (self.tableView.window) {
-        [self.tableView reloadData];
+    
+    if (searchObjs.items.count == 0) {
+        [AppManager showAlertWithMessage:@"查無資料!" pressOK:^{
+            [self.navigationController popViewControllerAnimated:YES];
+        } pressedCancel:nil];
+    }else{
+        if (self.tableView.window) {
+            [self.tableView reloadData];
+        }
     }
 }
 
