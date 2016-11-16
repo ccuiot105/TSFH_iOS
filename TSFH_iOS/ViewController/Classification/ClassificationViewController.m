@@ -10,6 +10,7 @@
 #import "FeedManager.h"
 #import "AppManager.h"
 #import "ClassificationTableViewCell.h"
+#import "ResultViewController.h"
 
 @interface ClassificationViewController ()
 @property (nonatomic,strong) CategorysObj *categorysObj;
@@ -86,8 +87,10 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-//    CategoryObj *itemObj = self.categorysObj.categorys[indexPath.row];
+    CategoryObj *itemObj = self.categorysObj.categorys[indexPath.row];
+    ResultViewController *vc = [ResultViewController ViewControllWithCategoryObj:itemObj];
     
+    [self showViewController:vc sender:nil];
 }
 
 

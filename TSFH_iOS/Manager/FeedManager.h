@@ -24,6 +24,6 @@
 
 + (void) requestAutocomplatsWith:(NSString *) key success:(ResponseBlock)success;
 
-+ (void) requestSearchsWithKey:(NSString *) key success:(ResponseBlock)success;
++ (void) requestSearchsWithKey:(NSString *)key sid:(NSString *)sid success:(ResponseBlock)success;
 
 @end
