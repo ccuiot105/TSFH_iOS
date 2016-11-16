@@ -9,9 +9,11 @@
 #import "ClassificationViewController.h"
 #import "FeedManager.h"
 #import "AppManager.h"
+#import "ClassificationTableViewCell.h"
 
 @interface ClassificationViewController ()
 @property (nonatomic,strong) CategorysObj *categorysObj;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end
 
 @implementation ClassificationViewController
@@ -34,13 +36,23 @@
 {
     _categorysObj = categorysObj;
     //資料載入，畫畫面
+    [self.tableView reloadData];
+}
+
+-(void)setTableView:(UITableView *)tableView
+{
+    _tableView = tableView;
+    tableView.rowHeight = UITableViewAutomaticDimension;
+    tableView.estimatedRowHeight = 300;
 }
 
 #pragma mark - 載入相關
 
 -(void)loadAPI
 {
+    self.loading = YES;
     [FeedManager requestCategorysSuccess:^(CategorysObj * _Nullable responseObject, NSError * _Nullable error) {
+        self.loading = NO;
         if (!error) {
             self.categorysObj = responseObject;
         }else{
@@ -52,5 +64,31 @@
         }
     }];
 }
+
+#pragma mark - Table view data source
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.categorysObj.categorys.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CategoryObj *itemObj = self.categorysObj.categorys[indexPath.row];
+    ClassificationTableViewCell *cell;
+    cell = [self.tableView dequeueReusableCellWithIdentifier:NSStringFromClass([ClassificationTableViewCell class])];
+    [cell initWithObject:itemObj];
+    return cell;
+}
+
+#pragma mark - Table view delegate
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+//    CategoryObj *itemObj = self.categorysObj.categorys[indexPath.row];
+    
+}
+
 
 @end
