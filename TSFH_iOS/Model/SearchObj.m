@@ -10,8 +10,8 @@
 
 @implementation SearchObjs
 
-- (void)setNews:(NSArray *)news {
-    _searchs = [SearchObj objectFromArray:news];
+- (void)setItems:(NSArray *)items {
+    _items = [SearchObj objectFromArray:items];
 }
 
 @end

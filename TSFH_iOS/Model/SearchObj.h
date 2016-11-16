@@ -10,24 +10,26 @@
 
 @interface SearchObjs : HTWObject
 
-@property (readonly) NSArray *searchs;
+@property (readonly) NSArray *items;
 
 @end
 
 @interface SearchObj : HTWObject
 
-@property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) NSString *category;
-@property (nonatomic, assign) NSInteger session;
-@property (nonatomic, assign) NSInteger year;
-@property (nonatomic, strong) NSString *group;
-@property (nonatomic, strong) NSString *subject;
-@property (nonatomic, strong) NSString *medalURL;
-@property (nonatomic, strong) NSString *school;
-@property (nonatomic, strong) NSString *instructor;
-@property (nonatomic, strong) NSString *author;
-@property (nonatomic, strong) NSString *summary;
-@property (nonatomic, strong) NSString *country;
-@property (nonatomic, strong) NSString *pdfURL;
+@property (readonly) NSString *title;
+@property (readonly) NSString *category;
+@property (readonly) NSInteger session;
+@property (readonly) NSInteger year;
+@property (readonly) NSString *group;
+@property (readonly) NSString *subject;
+@property (readonly) NSString *medalURL;
+@property (readonly) NSString *school;
+@property (readonly) NSString *instructor;
+@property (readonly) NSString *author;
+@property (readonly) NSString *summary;
+@property (readonly) NSString *country;
+@property (readonly) NSString *pdfURL;
+
+@property (nonatomic) BOOL isShowAll;
 
 @end

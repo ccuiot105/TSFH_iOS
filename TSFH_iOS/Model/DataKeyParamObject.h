@@ -10,7 +10,9 @@
 
 @interface DataKeyParamObject : BaseParamObject
 
-/* 公告 或 搜尋的key值 */
+/* 搜尋的key值 */
 @property (nonatomic, strong) NSString *key;
+/* 學科id */
+@property (nonatomic, strong) NSString *sid;
 
 @end

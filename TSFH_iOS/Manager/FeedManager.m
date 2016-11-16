@@ -12,8 +12,6 @@
 
 #define TSFH_SERVER             @"http://callnumber.acsite.org/"
 #define TSFH_CHECK_VERSION_URL  [NSString stringWithFormat:@"%@/TSFH/checkversion.php",TSFH_SERVER]
-#define TSFH_AUTOCOMPLAT_URL    [NSString stringWithFormat:@"%@/TSFH/autocomplate.php",TSFH_SERVER]
-#define TSFH_SEARCH_URL         [NSString stringWithFormat:@"%@/TSFH/search.php",TSFH_SERVER]
 
 @interface FeedManager ()
 
@@ -49,20 +47,21 @@
     DataKeyParamObject *paramObj = [DataKeyParamObject new];
     paramObj.key = key;
     
-    [ResponseAPINetWorking requestUrl:TSFH_AUTOCOMPLAT_URL param:paramObj block:^(NSDictionary * _Nullable responseObject, NSError * _Nullable error) {
+    [ResponseAPINetWorking requestUrl:[CheckVersionObj sharedInstance].autocomplate param:paramObj block:^(NSDictionary * _Nullable responseObject, NSError * _Nullable error) {
         if (success) {
             success([AutocomplateObj objectFromDictionary:responseObject],error);
         }
     }];
 }
 
-+ (void) requestSearchsWithKey:(NSString *) key success:(ResponseBlock)success{
++ (void) requestSearchsWithKey:(NSString *)key sid:(NSString *)sid success:(ResponseBlock)success{
     DataKeyParamObject *paramObj = [DataKeyParamObject new];
     paramObj.key = key;
+    paramObj.sid = sid;
     
-    [ResponseAPINetWorking requestUrl:TSFH_SEARCH_URL param:[DataKeyParamObject new] block:^(NSDictionary * _Nullable responseObject, NSError * _Nullable error) {
+    [ResponseAPINetWorking requestUrl:[CheckVersionObj sharedInstance].search param:[DataKeyParamObject new] block:^(NSDictionary * _Nullable responseObject, NSError * _Nullable error) {
         if (success) {
-            success([SearchObj objectFromDictionary:responseObject],error);
+            success([SearchObjs objectFromDictionary:responseObject],error);
         }
     }];
 }

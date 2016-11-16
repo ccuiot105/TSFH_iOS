@@ -18,11 +18,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.activityView = [[UIActivityIndicatorView alloc]
-                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+                                             initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     
     self.activityView.center = self.view.center;
     [self.view addSubview:self.activityView];
-    self.loading = NO;
+    self.loading = self.loading;
 }
 
 -(void)setLoading:(BOOL)loading
