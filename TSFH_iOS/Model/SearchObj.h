@@ -6,9 +6,15 @@
 //  Copyright © 2016 CCUIOT105. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "HTWObject.h"
 
-@interface SearchObj : NSObject
+@interface SearchObjs : HTWObject
+
+@property (readonly) NSArray *searchs;
+
+@end
+
+@interface SearchObj : HTWObject
 
 @property (nonatomic, strong) NSString *title;
 @property (nonatomic, strong) NSString *category;

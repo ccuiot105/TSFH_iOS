@@ -16,10 +16,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    _appManager = [AppManager shardInstance];
-    _feedManager = [AppManager shardInstance];
-    
-
 }
+
 @end

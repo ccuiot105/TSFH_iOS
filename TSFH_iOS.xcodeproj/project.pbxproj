@@ -45,6 +45,7 @@
 		CDB906B61DB8F90E0027F423 /* AppManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB906B51DB8F90E0027F423 /* AppManager.m */; };
 		CDB906BA1DB8FA1F0027F423 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB906B91DB8FA1F0027F423 /* UIColor+HexColor.m */; };
 		CDC98CB51DC626B2002F7F6E /* HTWObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC98CB31DC626B2002F7F6E /* HTWObject.m */; };
+		D04792E41DDAEA6C00C0DC80 /* DataKeyParamObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D04792E31DDAEA6C00C0DC80 /* DataKeyParamObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -123,6 +124,8 @@
 		CDB906B91DB8FA1F0027F423 /* UIColor+HexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexColor.m"; sourceTree = "<group>"; };
 		CDC98CB21DC626B2002F7F6E /* HTWObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTWObject.h; sourceTree = "<group>"; };
 		CDC98CB31DC626B2002F7F6E /* HTWObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTWObject.m; sourceTree = "<group>"; };
+		D04792E21DDAEA6C00C0DC80 /* DataKeyParamObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataKeyParamObject.h; sourceTree = "<group>"; };
+		D04792E31DDAEA6C00C0DC80 /* DataKeyParamObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataKeyParamObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,6 +312,8 @@
 			children = (
 				CD73DA461DD88986003F2DC0 /* BaseParamObject.h */,
 				CD73DA471DD88986003F2DC0 /* BaseParamObject.m */,
+				D04792E21DDAEA6C00C0DC80 /* DataKeyParamObject.h */,
+				D04792E31DDAEA6C00C0DC80 /* DataKeyParamObject.m */,
 			);
 			name = params;
 			sourceTree = "<group>";
@@ -432,6 +437,7 @@
 				TargetAttributes = {
 					8C4B7CC31DB7709200EB585F = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 796PUW3YDR;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -502,6 +508,7 @@
 				CDB906B61DB8F90E0027F423 /* AppManager.m in Sources */,
 				8CCDA5C41DCC2F5B00BFC411 /* CheckVersionObj.m in Sources */,
 				CD73DA481DD88986003F2DC0 /* BaseParamObject.m in Sources */,
+				D04792E41DDAEA6C00C0DC80 /* DataKeyParamObject.m in Sources */,
 				CD73DA521DD8945E003F2DC0 /* ResponseAPINetWorking.m in Sources */,
 				CD53A6E21DD9F1DD00B2A7E9 /* AnnouncementTableViewCell.m in Sources */,
 				CD73DA5B1DD8A842003F2DC0 /* NewsObj.m in Sources */,
@@ -620,7 +627,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 796PUW3YDR;
 				ENABLE_BITCODE = YES;
 				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = TSFH_iOS/Info.plist;
@@ -635,7 +642,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 796PUW3YDR;
 				ENABLE_BITCODE = YES;
 				GCC_NO_COMMON_BLOCKS = NO;
 				INFOPLIST_FILE = TSFH_iOS/Info.plist;

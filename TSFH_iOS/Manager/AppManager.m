@@ -80,50 +80,5 @@ static AppManager *_manager = nil;
     [controller presentViewController:alert animated:YES completion:nil];
 }
 
-- (void) showAlertInViewController:(UIViewController *) controller message:(NSString *) msg {
-    [self showAlertInViewController:controller message:msg pressOK:NULL pressedCancel:NULL];
-}
-
-- (void) showAlertInViewController:(UIViewController *) controller message:(NSString *) msg pressOK:(void(^)(void)) pok {
-    [self showAlertInViewController:controller message:msg pressOK:pok pressedCancel:NULL];
-}
-
-- (void) showAlertInViewController:(UIViewController *) controller message:(NSString *) msg pressOK:(void(^)(void)) pok pressedCancel:(void(^)(void)) pcancel {
-    UIAlertController * alert=   [UIAlertController
-                                 alertControllerWithTitle:@"提示"
-                                 message:msg
-                                 preferredStyle:UIAlertControllerStyleAlert];
-
-    UIAlertAction* ok = [UIAlertAction
-                         actionWithTitle:@"OK"
-                         style:UIAlertActionStyleDefault
-                         handler:^(UIAlertAction * action) {
-                             [alert dismissViewControllerAnimated:YES completion:^{
-                                 if (pok) pok();
-                             }];
-                         }];
-
-    [alert addAction:ok];
-
-    if (!pcancel) {
-        [controller presentViewController:alert animated:YES completion:nil];
-        return;
-    }
-
-    UIAlertAction* cancel = [UIAlertAction
-                             actionWithTitle:@"Cancel"
-                             style:UIAlertActionStyleDefault
-                             handler:^(UIAlertAction * action) {
-                                 [alert dismissViewControllerAnimated:YES completion:^{
-                                     if (pcancel)
-                                         pcancel();
-                                 }];
-                             }];
-
-
-    [alert addAction:cancel];
-
-    [controller presentViewController:alert animated:YES completion:nil];
-}
 
 @end

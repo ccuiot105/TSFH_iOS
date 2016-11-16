@@ -10,8 +10,6 @@
 
 @interface AppManager : NSObject
 
-+(id)shardInstance;
-
 //初始設定
 +(void)initAPP;
 
@@ -22,10 +20,6 @@
 +(UIViewController*)getRootViewController;
 
 //秀alert
-+(void) showAlertWithMessage:(NSString *) msg pressOK:(void(^)(void)) pok pressedCancel:(void(^)(void)) pcancel;
-
--(void)showAlertInViewController:(UIViewController *) controller message:(NSString *) msg;
--(void)showAlertInViewController:(UIViewController *) controller message:(NSString *) msg pressOK:(void(^)(void)) pok;
--(void)showAlertInViewController:(UIViewController *) controller message:(NSString *) msg pressOK:(void(^)(void)) pok pressedCancel:(void(^)(void)) pcancel;
++(void)showAlertWithMessage:(NSString *) msg pressOK:(void(^)(void)) pok pressedCancel:(void(^)(void)) pcancel;
 
 @end

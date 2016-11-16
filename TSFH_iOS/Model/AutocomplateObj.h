@@ -6,9 +6,9 @@
 //  Copyright © 2016 CCUIOT105. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "HTWObject.h"
 
-@interface AutocomplateObj : NSObject
+@interface AutocomplateObj : HTWObject
 
 @property (readonly) NSArray<NSString *> *keys;
 

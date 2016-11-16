@@ -12,7 +12,4 @@
 
 @interface BaseTabViewController : UITabBarController
 
-@property (nonatomic, strong) AppManager *appManager;
-@property (nonatomic, strong) FeedManager *feedManager;
-
 @end

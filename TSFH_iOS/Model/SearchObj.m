@@ -8,6 +8,14 @@
 
 #import "SearchObj.h"
 
+@implementation SearchObjs
+
+- (void)setNews:(NSArray *)news {
+    _searchs = [SearchObj objectFromArray:news];
+}
+
+@end
+
 @implementation SearchObj
 
 @end
