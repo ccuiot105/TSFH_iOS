@@ -48,6 +48,7 @@
 		CDB906BA1DB8FA1F0027F423 /* UIColor+HexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = CDB906B91DB8FA1F0027F423 /* UIColor+HexColor.m */; };
 		CDC98CB51DC626B2002F7F6E /* HTWObject.m in Sources */ = {isa = PBXBuildFile; fileRef = CDC98CB31DC626B2002F7F6E /* HTWObject.m */; };
 		D04792E41DDAEA6C00C0DC80 /* DataKeyParamObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D04792E31DDAEA6C00C0DC80 /* DataKeyParamObject.m */; };
+		D08AE41A1DDDA341008B1292 /* AutocomplatsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D08AE4191DDDA341008B1292 /* AutocomplatsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +133,8 @@
 		CDC98CB31DC626B2002F7F6E /* HTWObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTWObject.m; sourceTree = "<group>"; };
 		D04792E21DDAEA6C00C0DC80 /* DataKeyParamObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataKeyParamObject.h; sourceTree = "<group>"; };
 		D04792E31DDAEA6C00C0DC80 /* DataKeyParamObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataKeyParamObject.m; sourceTree = "<group>"; };
+		D08AE4181DDDA341008B1292 /* AutocomplatsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutocomplatsViewController.h; sourceTree = "<group>"; };
+		D08AE4191DDDA341008B1292 /* AutocomplatsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutocomplatsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -375,6 +378,8 @@
 			children = (
 				CDB906A71DB8E5FD0027F423 /* SearchViewController.h */,
 				CDB906A81DB8E5FD0027F423 /* SearchViewController.m */,
+				D08AE4181DDDA341008B1292 /* AutocomplatsViewController.h */,
+				D08AE4191DDDA341008B1292 /* AutocomplatsViewController.m */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -521,6 +526,7 @@
 				CD186C831DDC31A800E32364 /* ResultTableViewCell.m in Sources */,
 				8C475CBA1DB9DB8C00E4CE1B /* AFHTTPSessionManager.m in Sources */,
 				CDB906A61DB8E5ED0027F423 /* AnnouncementViewController.m in Sources */,
+				D08AE41A1DDDA341008B1292 /* AutocomplatsViewController.m in Sources */,
 				8C475CBF1DB9DB8C00E4CE1B /* AFURLSessionManager.m in Sources */,
 				CDB906A91DB8E5FD0027F423 /* SearchViewController.m in Sources */,
 				CDB906BA1DB8FA1F0027F423 /* UIColor+HexColor.m in Sources */,

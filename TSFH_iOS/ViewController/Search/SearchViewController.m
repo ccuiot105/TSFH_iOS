@@ -7,8 +7,20 @@
 //
 
 #import "SearchViewController.h"
+#import "ResultViewController.h"
+#import "AutocomplatsViewController.h"
+#import "AutocomplateObj.H"
+#import "FeedManager.h"
+#import "AppManager.h"
 
-@interface SearchViewController ()
+@interface SearchViewController () <UISearchBarDelegate>
+
+@property (nonatomic, weak) IBOutlet UIView *resultBaseView;
+@property (nonatomic, weak) IBOutlet UIView *autocomplatsView;
+@property (nonatomic, weak) IBOutlet UISearchBar* searchBar;
+
+@property (nonatomic, strong) AutocomplatsViewController *controller;
+@property (nonatomic, strong) ResultViewController *resultController;
 
 @end
 
@@ -17,6 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    _autocomplatsView.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +37,63 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) dismissAutocomplats:(SearchViewController *) blockSelf {
+    [UIView animateWithDuration:0.5 animations:^{
+        blockSelf.controller.view.alpha = 0;
+    } completion:^(BOOL finished) {
+        [blockSelf.controller.view removeFromSuperview];
+        [blockSelf.controller removeFromParentViewController];
+        blockSelf.autocomplatsView.hidden = YES;
+    }];
 }
-*/
+
+- (void) doSearch {
+    if (!_resultController)
+        _resultController = [ResultViewController ViewControllWithKey:_searchBar.text];
+    
+    [self addChildViewController:_resultController];
+    [_resultBaseView addSubview:_resultController.view];
+    _resultController.view.frame = _resultBaseView.bounds;
+    [_resultController didMoveToParentViewController:self];
+}
+
+- (void) loadAPI {
+    [FeedManager requestAutocomplatsWith:_searchBar.text success:^(id  _Nullable responseObject, NSError * _Nullable error) {
+        if (!error) {
+            _autocomplatsView.hidden = NO;
+            
+            __block SearchViewController* blockSelf = self;
+            
+            if (!_controller)
+                _controller = [self.storyboard instantiateViewControllerWithIdentifier:@"AutocomplatsViewController"];
+            
+            [_autocomplatsView addSubview:_controller.view];
+            _controller.view.frame = blockSelf.autocomplatsView.bounds;
+            [self addChildViewController:blockSelf.controller];
+            [self.controller didMoveToParentViewController:self];
+            [self.controller reloadKeys:((AutocomplateObj *)responseObject).keys];
+            [self.controller setSelectKey:^(NSString *key) {
+                blockSelf.searchBar.text = key;
+
+                [blockSelf dismissAutocomplats:blockSelf];
+                [blockSelf doSearch];
+            }];
+            
+        }else {
+            [AppManager showAlertWithMessage:@"與伺服器連線異常，是否重新連線" pressOK:^{
+                [self loadAPI];
+            } pressedCancel:^{}];
+        }
+    }];
+}
+
+#pragma mark - UISearchBarDelegate Methods
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self doSearch];
+}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self loadAPI];
+}
 
 @end
