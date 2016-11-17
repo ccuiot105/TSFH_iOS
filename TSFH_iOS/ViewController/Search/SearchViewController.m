@@ -60,6 +60,9 @@
 }
 
 - (void) loadAPI {
+    if (_searchBar.text.length == 0)
+        return;
+    
     [FeedManager requestAutocomplatsWith:_searchBar.text success:^(id  _Nullable responseObject, NSError * _Nullable error) {
         if (!error) {
             _autocomplatsView.hidden = NO;
