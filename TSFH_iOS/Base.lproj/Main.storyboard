@@ -54,7 +54,7 @@
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trE-pW-UrN">
                                 <rect key="frame" x="0.0" y="108" width="375" height="131"/>
-                                <color key="backgroundColor" red="0.79906743330664365" green="0.89119136589907977" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.86743287238305689" green="0.95546457062987167" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="131" id="Wg1-Je-YJb"/>
                                 </constraints>
@@ -395,7 +395,7 @@
                     <tabBarItem key="tabBarItem" title="公告" image="news" id="yUC-eb-0xv">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1tI-3s-WnG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1tI-3s-WnG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

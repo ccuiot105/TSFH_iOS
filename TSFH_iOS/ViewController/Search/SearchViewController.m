@@ -20,7 +20,7 @@
 @property (nonatomic, weak) IBOutlet UISearchBar* searchBar;
 
 @property (nonatomic, strong) AutocomplatsViewController *controller;
-@property (nonatomic, strong) ResultViewController *resultController;
+@property (nonatomic, strong) UITapGestureRecognizer *recognizer;
 
 @end
 
@@ -30,11 +30,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     _autocomplatsView.hidden = YES;
+    
+    _recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognizer:)];
+    [_resultBaseView addGestureRecognizer:_recognizer];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) tapRecognizer:(UITapGestureRecognizer *) recognizer {
+    [self dismissAutocomplats:self];
 }
 
 - (void) dismissAutocomplats:(SearchViewController *) blockSelf {
@@ -48,13 +55,8 @@
 }
 
 - (void) doSearch {
-    if (!_resultController)
-        _resultController = [ResultViewController ViewControllWithKey:_searchBar.text];
-    
-    [self addChildViewController:_resultController];
-    [_resultBaseView addSubview:_resultController.view];
-    _resultController.view.frame = _resultBaseView.bounds;
-    [_resultController didMoveToParentViewController:self];
+    ResultViewController *resultController = [ResultViewController ViewControllWithKey:_searchBar.text];
+    [self.navigationController pushViewController:resultController animated:YES];
 }
 
 - (void) loadAPI {
@@ -64,8 +66,9 @@
             
             __block SearchViewController* blockSelf = self;
             
-            if (!_controller)
+            if (!_controller) {
                 _controller = [self.storyboard instantiateViewControllerWithIdentifier:@"AutocomplatsViewController"];
+            }
             
             [_autocomplatsView addSubview:_controller.view];
             _controller.view.frame = blockSelf.autocomplatsView.bounds;
