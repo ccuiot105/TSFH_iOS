@@ -29,8 +29,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    _autocomplatsView.hidden = YES;
-    
     _recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRecognizer:)];
     [_resultBaseView addGestureRecognizer:_recognizer];
 }
@@ -50,7 +48,6 @@
     } completion:^(BOOL finished) {
         [blockSelf.controller.view removeFromSuperview];
         [blockSelf.controller removeFromParentViewController];
-        blockSelf.autocomplatsView.hidden = YES;
     }];
 }
 
@@ -60,18 +57,24 @@
 }
 
 - (void) loadAPI {
-    if (_searchBar.text.length == 0)
+    if (_searchBar.text.length == 0) {
+        if (_controller) {
+            [_controller reloadKeys:@[]];
+        }
         return;
+    }
     
     [FeedManager requestAutocomplatsWith:_searchBar.text success:^(id  _Nullable responseObject, NSError * _Nullable error) {
         if (!error) {
-            _autocomplatsView.hidden = NO;
+            NSArray<NSString *> *keys = ((AutocomplateObj *)responseObject).keys;
+            if (keys.count > 0 && ![keys[0] isEqualToString:_searchBar.text]) {
+                return;
+            }
             
             __block SearchViewController* blockSelf = self;
             
-            if (!_controller) {
+            if (!_controller)
                 _controller = [self.storyboard instantiateViewControllerWithIdentifier:@"AutocomplatsViewController"];
-            }
             
             [_autocomplatsView addSubview:_controller.view];
             _controller.view.frame = blockSelf.autocomplatsView.bounds;

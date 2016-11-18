@@ -44,31 +44,29 @@
                             </view>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Cc5-ej-ddb">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="j1R-Jm-Slx"/>
-                                </constraints>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="aeJ-8i-fVS" id="54p-3k-4fC"/>
                                 </connections>
                             </searchBar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="trE-pW-UrN">
-                                <rect key="frame" x="0.0" y="108" width="375" height="131"/>
+                                <rect key="frame" x="0.0" y="108" width="375" height="510"/>
                                 <color key="backgroundColor" red="0.86743287238305689" green="0.95546457062987167" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="131" id="Wg1-Je-YJb"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="trE-pW-UrN" secondAttribute="trailing" id="4Vk-Am-NRf"/>
                             <constraint firstItem="Cc5-ej-ddb" firstAttribute="leading" secondItem="77s-9s-rEs" secondAttribute="leading" id="EVP-TU-9aW"/>
                             <constraint firstItem="Cc5-ej-ddb" firstAttribute="top" secondItem="cHp-uu-sAl" secondAttribute="bottom" id="HZP-hI-Euf"/>
                             <constraint firstItem="trE-pW-UrN" firstAttribute="top" secondItem="Cc5-ej-ddb" secondAttribute="bottom" id="ME2-gB-wmm"/>
                             <constraint firstAttribute="trailing" secondItem="trE-pW-UrN" secondAttribute="trailing" id="PJV-GY-mwx"/>
+                            <constraint firstItem="trE-pW-UrN" firstAttribute="leading" secondItem="77s-9s-rEs" secondAttribute="leading" id="PYJ-TW-fX5"/>
                             <constraint firstItem="trE-pW-UrN" firstAttribute="leading" secondItem="77s-9s-rEs" secondAttribute="leading" id="ZPW-CY-aKr"/>
                             <constraint firstItem="0Rc-mB-tDT" firstAttribute="top" secondItem="Cc5-ej-ddb" secondAttribute="bottom" id="bJs-ZN-WAs"/>
                             <constraint firstItem="aWM-kR-6wj" firstAttribute="top" secondItem="0Rc-mB-tDT" secondAttribute="bottom" id="cwu-2s-Ej4"/>
+                            <constraint firstItem="aWM-kR-6wj" firstAttribute="top" secondItem="trE-pW-UrN" secondAttribute="bottom" id="dOf-Je-uUk"/>
+                            <constraint firstItem="trE-pW-UrN" firstAttribute="top" secondItem="Cc5-ej-ddb" secondAttribute="bottom" id="e4Z-Io-MdG"/>
                             <constraint firstItem="0Rc-mB-tDT" firstAttribute="leading" secondItem="77s-9s-rEs" secondAttribute="leading" id="k70-nv-8uF"/>
                             <constraint firstAttribute="trailing" secondItem="0Rc-mB-tDT" secondAttribute="trailing" id="lZR-JP-5ig"/>
                             <constraint firstItem="Cc5-ej-ddb" firstAttribute="leading" secondItem="77s-9s-rEs" secondAttribute="leading" id="pSZ-gK-pg2"/>
@@ -395,7 +393,7 @@
                     <tabBarItem key="tabBarItem" title="公告" image="news" id="yUC-eb-0xv">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                     </tabBarItem>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="1tI-3s-WnG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1tI-3s-WnG">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
