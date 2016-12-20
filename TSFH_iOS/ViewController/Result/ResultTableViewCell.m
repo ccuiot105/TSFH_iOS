@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *instructorTopHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *schoolTopHeight;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconWidth;
 
 
 @property(nonatomic,weak) SearchObj *searchObj;
@@ -71,6 +72,11 @@
     self.subTitle = [NSString stringWithFormat:@"%@/%@/%@",object.author,object.group,object.subject];
     self.summary = object.summary;
     self.medalImageUrl = object.medalURL;
+    if (object.medalURL.length > 0) {
+        self.iconWidth.constant = 40;
+    }else{
+        self.iconWidth.constant = 0;
+    }
     
     if (self.searchObj.isShowAll) {
         self.school = object.school;

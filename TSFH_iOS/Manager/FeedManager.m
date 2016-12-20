@@ -10,8 +10,11 @@
 #import "ResponseAPINetWorking.h"
 #import "DataKeyParamObject.h"
 
-#define TSFH_SERVER             @"http://callnumber.acsite.org/"
-#define TSFH_CHECK_VERSION_URL  [NSString stringWithFormat:@"%@/TSFH/checkversion.php",TSFH_SERVER]
+//#define TSFH_SERVER             @"http://callnumber.acsite.org/"
+//#define TSFH_CHECK_VERSION_URL  [NSString stringWithFormat:@"%@TSFH/checkversion.php",TSFH_SERVER]
+
+#define TSFH_SERVER             @"http://ec2-35-165-152-136.us-west-2.compute.amazonaws.com:8080/"
+#define TSFH_CHECK_VERSION_URL  [NSString stringWithFormat:@"%@API/REST/CCU/checkVersion",TSFH_SERVER]
 
 @interface FeedManager ()
 
@@ -47,7 +50,7 @@
     DataKeyParamObject *paramObj = [DataKeyParamObject new];
     paramObj.key = key;
     
-    [ResponseAPINetWorking requestUrl:[CheckVersionObj sharedInstance].autocomplate param:paramObj block:^(NSDictionary * _Nullable responseObject, NSError * _Nullable error) {
+    [ResponseAPINetWorking requestUrl:[CheckVersionObj sharedInstance].autocomplete param:paramObj block:^(NSDictionary * _Nullable responseObject, NSError * _Nullable error) {
         if (success) {
             success([AutocomplateObj objectFromDictionary:responseObject],error);
         }
@@ -59,7 +62,7 @@
     paramObj.key = key;
     paramObj.sid = sid;
     
-    [ResponseAPINetWorking requestUrl:[CheckVersionObj sharedInstance].search param:[DataKeyParamObject new] block:^(NSDictionary * _Nullable responseObject, NSError * _Nullable error) {
+    [ResponseAPINetWorking requestUrl:[CheckVersionObj sharedInstance].search param:paramObj block:^(NSDictionary * _Nullable responseObject, NSError * _Nullable error) {
         if (success) {
             success([SearchObjs objectFromDictionary:responseObject],error);
         }

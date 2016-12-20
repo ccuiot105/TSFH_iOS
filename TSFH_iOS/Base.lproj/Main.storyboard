@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2657" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Swk-jx-mIT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Swk-jx-mIT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -351,6 +351,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="cardView" destination="LIB-9m-U5M" id="4Zp-FE-c5o"/>
+                                            <outlet property="iconWidth" destination="D4N-vw-dQA" id="Xb0-dd-ZqH"/>
                                             <outlet property="instructorLabel" destination="NMN-pd-bJN" id="lnO-sF-Tn4"/>
                                             <outlet property="instructorTopHeight" destination="Jcc-R6-xEz" id="CNW-iy-HzG"/>
                                             <outlet property="medalImageView" destination="hwG-tV-bLu" id="8hN-6r-4zW"/>
@@ -440,15 +441,15 @@
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="標題" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAa-xh-4Yt">
-                                                            <rect key="frame" x="8" y="29" width="35" height="21"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="標題" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAa-xh-4Yt">
+                                                            <rect key="frame" x="8" y="29" width="37" height="21"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="內文" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RX-Td-beU">
-                                                            <rect key="frame" x="8" y="50" width="35" height="70.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="內文" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4RX-Td-beU">
+                                                            <rect key="frame" x="8" y="50" width="25" height="70.5"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -457,8 +458,10 @@
                                                     <constraints>
                                                         <constraint firstItem="eAa-xh-4Yt" firstAttribute="leading" secondItem="FiO-VC-F9U" secondAttribute="leading" id="8tG-7T-Of2"/>
                                                         <constraint firstItem="eAa-xh-4Yt" firstAttribute="top" secondItem="FiO-VC-F9U" secondAttribute="bottom" id="Cts-ba-EuJ"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="eAa-xh-4Yt" secondAttribute="trailing" constant="8" id="F8U-BW-i53"/>
                                                         <constraint firstItem="FiO-VC-F9U" firstAttribute="top" secondItem="onF-X4-0gK" secondAttribute="top" constant="8" id="OQ6-l3-hIO"/>
                                                         <constraint firstItem="4RX-Td-beU" firstAttribute="top" secondItem="eAa-xh-4Yt" secondAttribute="bottom" id="bxA-vN-lqG"/>
+                                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="4RX-Td-beU" secondAttribute="trailing" constant="8" id="loX-oL-ImO"/>
                                                         <constraint firstItem="FiO-VC-F9U" firstAttribute="leading" secondItem="onF-X4-0gK" secondAttribute="leading" constant="8" id="oeH-8Q-VNW"/>
                                                         <constraint firstAttribute="bottom" secondItem="4RX-Td-beU" secondAttribute="bottom" constant="8" id="rD9-u9-woH"/>
                                                         <constraint firstItem="4RX-Td-beU" firstAttribute="leading" secondItem="eAa-xh-4Yt" secondAttribute="leading" id="shN-jm-gLW"/>

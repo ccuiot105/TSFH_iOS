@@ -12,7 +12,7 @@
 
 @property (nonatomic, strong) NSString *news;
 @property (nonatomic, strong) NSString *category;
-@property (nonatomic, strong) NSString *autocomplate;
+@property (nonatomic, strong) NSString *autocomplete;
 @property (nonatomic, strong) NSString *search;
 
 + (instancetype)sharedInstance;

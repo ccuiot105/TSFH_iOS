@@ -63,11 +63,10 @@
         }
         return;
     }
-    
-    [FeedManager requestAutocomplatsWith:_searchBar.text success:^(id  _Nullable responseObject, NSError * _Nullable error) {
+    NSString *key = _searchBar.text;
+    [FeedManager requestAutocomplatsWith:key success:^(id  _Nullable responseObject, NSError * _Nullable error) {
         if (!error) {
-            NSArray<NSString *> *keys = ((AutocomplateObj *)responseObject).keys;
-            if (keys.count > 0 && ![keys[0] isEqualToString:_searchBar.text]) {
+            if (![key isEqualToString:_searchBar.text]) {
                 return;
             }
             
